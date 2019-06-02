@@ -1,0 +1,20 @@
+$base-color: #666;
+$link-color: #0000FF;
+
+
+body {
+  color: $base-color;
+}
+
+.shop-list {
+  font-size: 18px;
+  
+  a {
+    font-size: 14px;
+    color: $link-color;
+  }
+}
+
+#map {
+    height: 300px;
+}

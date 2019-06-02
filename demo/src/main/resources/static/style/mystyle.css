@@ -1,0 +1,16 @@
+body {
+  color: #666;
+}
+
+.shop-list {
+  font-size: 18px;
+}
+
+.shop-list a {
+  font-size: 14px;
+  color: #0000FF;
+}
+
+#map {
+  height: 300px;
+}
