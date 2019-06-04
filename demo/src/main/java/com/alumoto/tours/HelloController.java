@@ -16,4 +16,9 @@ public class HelloController {
         return "map";
     }
 
+    @RequestMapping(value = "/addspot")
+    private String addspot(){
+        return "addspot";
+    }
+
 }
