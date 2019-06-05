@@ -1,9 +1,28 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Document</title>
-</head>
+    <title>Add spot</title>
+    <div th:replace="common"></div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+
 <body>
-    
+    <h1>Add spot</h1>
+    <div id="map"></div>
+    <br>
+    <form action="addspot/add" method="post">
+        <label for="spot_lat">経度:</label><input type="text" name="spot_lat" id="spot_lat"><br>
+        <label for="spot_lng">緯度:</label><input type="text" name="spot_lng" id="spot_lng"><br>
+        <br>
+        <label for="spot_name">名前:</label><input type="text" name="spot_name" id="spot_name"><br>
+        <input type="submit" value="登録"></input>
+    </form>
+
+
+
+    <a href="index">index</a><br>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script type="text/javascript" th:src="@{/js/addspot.js}"></script>
 </body>
+
 </html>
