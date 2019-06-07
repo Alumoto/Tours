@@ -1,4 +1,4 @@
-package com.alumoto.tours;
+package com.alumoto.tours.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +16,9 @@ public class HelloController {
         return "map";
     }
 
-    @RequestMapping(value = "/addspot")
-    private String addspot(){
-        return "addspot";
+    @RequestMapping(value = "/spot")
+    private String spot(){
+        return "spot";
     }
 
 }

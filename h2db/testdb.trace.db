@@ -1,0 +1,4 @@
+2019-06-07 13:30:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "SPOTS" が見つかりません
+Table "SPOTS" not found; SQL statement:
+select spot0_.spot_id as spot_id1_0_, spot0_.spot_latitude as spot_lat2_0_, spot0_.spot_longitude as spot_lon3_0_, spot0_.spot_name as spot_nam4_0_ from spots spot0_ order by spot0_.spot_latitude, spot0_.spot_longitude limit ? [42102-199]
