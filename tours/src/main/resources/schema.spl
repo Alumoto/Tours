@@ -1,6 +1,0 @@
-create table if not exists spot{
-    spot_id int primary key auto_increment,
-    spot_name varchar(50) not null,
-    spot_lnt double(9,6) not null,
-    spot_lng double(9,6) not null,
-};

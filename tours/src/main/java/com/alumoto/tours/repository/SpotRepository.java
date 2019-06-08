@@ -12,4 +12,5 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
     @Query("SELECT x FROM Spot x ORDER BY x.spotLatitude, x.spotLongitude")
     Page<Spot> findAllOrderByName(Pageable pageable);
 
+    //ここなおす
 }
