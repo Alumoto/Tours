@@ -32,10 +32,10 @@ public class SpotController {
     
     @RequestMapping(method = RequestMethod.GET)
     String list(Model model) {
-        Page<Spot> spots = spotService.findAll(PageRequest.of(0,20));
-        model.addAttribute("spots", spots);
-        // Spring bootでは画面のパスは「templates/customers/list.html」となる
-        return "spot/list";
+        // Page<Spot> spots = spotService.findAll(PageRequest.of(0,20));
+        // model.addAttribute("spots", spots);
+        // // Spring bootでは画面のパスは「templates/customers/list.html」となる
+        return "spot";
     }
     
 
@@ -45,10 +45,10 @@ public class SpotController {
         if (result.hasErrors()) {
             return list(model);
         }
-       Spot spot = new Spot();
+        Spot spot = new Spot();
         BeanUtils.copyProperties(form, spot);
         spotService.create(spot);
-        return "redirect:spot/list";
+        return "redirect:spot";
     }
 
 }
