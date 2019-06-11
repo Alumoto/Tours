@@ -17,10 +17,10 @@
             <th>longitude</th>
         </tr>
     <tr th:each="spot : ${spots}">
-        <td th:text="spot.spotId">100</td>
-        <td th:text="spot.spotName">テスト</td>
-        <td th:text="spot.spotLatitude">100</td>
-        <td th:text="spot.spotLongitude">100</td>
+        <td th:text="${spot.spotId}">100</td>
+        <td th:text="${spot.spotName}">???</td>
+        <td th:text="${spot.spotLat}">100</td>
+        <td th:text="${spot.spotLng}">100</td>
     </tr>
 
     <a href="add">Add spot</a><br>
