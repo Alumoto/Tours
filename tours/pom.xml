@@ -80,30 +80,80 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-			<groupId>com.microsoft.azure</groupId>
-			<artifactId>azure-webapp-maven-plugin</artifactId>
-			<version>1.4.0</version>
-			<configuration>
-			<deploymentType>jar</deploymentType>
+				<groupId>com.microsoft.azure</groupId>
+				<artifactId>azure-webapp-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<configuration>
+					<authentication>
+						<serverId>azure-auth</serverId> 
+					</authentication>
+					<deploymentType>jar</deploymentType>
 
-			<!-- configure app to run on port 80, required by App Service -->
-			<appSettings>
-				<property> 
-				<name>JAVA_OPTS</name> 
-				<value>-Dserver.port=80</value> 
-				</property> 
-			</appSettings>
+					<!-- configure app to run on port 80, required by App Service -->
+					<appSettings>
+						<property> 
+						<name>JAVA_OPTS</name> 
+						<value>-Dserver.port=80</value> 
+						</property> 
+					</appSettings>
 
-			<!-- Web App information -->
-			<resourceGroup>ALMTApps</resourceGroup>
-			<appName>Tours</appName>
-			<region>japanwest</region>  
+					<!-- Web App information -->
+					<resourceGroup>ALMTApps</resourceGroup>
+					<appName>Toursapp-${maven.build.timestamp}</appName>
+					<region>japaneast</region>  
 
-			<!-- Java Runtime Stack for Web App on Linux-->
-			<linuxRuntime>jre8</linuxRuntime>
-			</configuration>
+					<!-- Java Runtime Stack for Web App on Linux-->
+					<deploymentType>jar</deploymentType>
+            		<stopAppDuringDeployment>true</stopAppDuringDeployment>
+					<javaVersion>1.8</javaVersion>
+					<resources>
+                    <resource>
+                        <directory>${project.basedir}\target</directory>
+                        <targetPath>\</targetPath>
+                        <includes>
+                            <include>*.jar</include>
+                        </includes>
+                    </resource>
+                    <resource>
+                        <directory>${project.basedir}</directory>
+                        <targetPath>\</targetPath>
+                        <includes>
+                            <include>web.config</include>
+                        </includes>
+                    </resource>
+                </resources>
+				</configuration>
+				<dependencies>
+					<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+					<dependency>
+						<groupId>javax.xml.bind</groupId>
+						<artifactId>jaxb-api</artifactId>
+						<version>2.4.0-b180830.0359</version>
+					</dependency>
+					<!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
+					<dependency>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-impl</artifactId>
+						<version>2.4.0-b180830.0438</version>
+					</dependency>
+					<!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core -->
+					<dependency>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-core</artifactId>
+						<version>2.3.0.1</version>
+					</dependency>
+					<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+					<dependency>
+						<groupId>javax.activation</groupId>
+						<artifactId>activation</artifactId>
+						<version>1.1.1</version>
+					</dependency>
+
+        </dependencies>
 			</plugin>
+			
 		</plugins>
+		<finalName>ROOT</finalName>
 	</build>
 
 </project>
