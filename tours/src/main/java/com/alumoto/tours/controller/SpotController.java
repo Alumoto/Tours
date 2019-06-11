@@ -27,7 +27,7 @@ public class SpotController {
         return new SpotForm();
     }
     
-    @RequestMapping(value="/list")
+    @GetMapping(value="/list")
     String list(Model model) {
         Page<Spot> spots = spotService.findAll(PageRequest.of(0,20));
         model.addAttribute("spots", spots);
