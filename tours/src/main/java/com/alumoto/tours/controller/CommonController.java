@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HelloController {
+public class CommonController {
 
     @RequestMapping(value="/index")
     private String index(){
@@ -18,7 +18,12 @@ public class HelloController {
 
     @RequestMapping(value = "/spot")
     private String spot(){
-        return "spot";
+        return "redirect:/spot/list";
+    }
+
+    @RequestMapping(value = "/spot/list")
+    private String list(){
+        return "spot/list";
     }
 
 }

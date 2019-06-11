@@ -43,7 +43,7 @@ function outputPos(map){
     var zoom = map.getZoom();
 
     //inputに出力
-    document.getElementById('spot_lat').value = pos.lat;
-    document.getElementById('spot_lng').value = pos.lng;
+    document.getElementById('spotLat').value = pos.lat;
+    document.getElementById('spotLng').value = pos.lng;
     //document.getElementById('zoom_input').value = zoom;
 }

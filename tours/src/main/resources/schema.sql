@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS SPOTS(
-    spot_id INT NOT NULL IDENTITY(1,1),
-    spot_name nchar(50) not null,
-    spot_lnt float not null,
-    spot_lng float not null,
+    SPOT_ID INT PRIMARY KEY AUTO_INCREMENT,
+    SPOT_NAME VARCHAR(50) NOT NULL,
+    SPOT_LAT FLOAT NOT NULL,
+    SPOT_LNG FLOAT NOT NULL,
 );

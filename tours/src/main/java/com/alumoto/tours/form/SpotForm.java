@@ -9,10 +9,10 @@ import javax.validation.constraints.Size;
 public class SpotForm {
 
     @NotNull
-    double spotLatitude;
+    double spotLat;
 
     @NotNull
-    double spotLongitude;
+    double spotLng;
 
     @NotNull
     @Size(min = 1, max = 127)

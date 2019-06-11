@@ -15,16 +15,16 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class Spot {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer spotId;
 
     @NotNull
     @Column(nullable = false)
-    private double spotLatitude;
+    private double spotLat;
 
     @NotNull
     @Column(nullable = false)
-    private double spotLongitude;
+    private double spotLng;
 
     @NotNull
     @Size(min = 1, max = 127)
