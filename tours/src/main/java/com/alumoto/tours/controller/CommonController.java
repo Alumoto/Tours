@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommonController {
 
-    @RequestMapping(value={"/", "/index"})
+    @RequestMapping({"/", "/index"})
     private String index(){
         return "index";
     }
@@ -20,5 +20,7 @@ public class CommonController {
     private String spot(){
         return "redirect:spot/list";
     }
+
+   
 
 }

@@ -39,7 +39,11 @@ public class SpotController {
         return "spot/add";//これはhtmlファイルのパスを返す
     }
 
-
+    @PostMapping(path = "/delete")
+    String delete(@RequestParam Integer spotId){
+        spotService.delete(spotId);
+        return "redirect:/spot/list";
+    }
 
     @PostMapping
     String create(@Validated SpotForm form, BindingResult result, Model model) {

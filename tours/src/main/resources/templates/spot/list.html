@@ -15,16 +15,31 @@
             <th>Name</th>
             <th>Latitude</th>
             <th>longitude</th>
+            <th colspan="2">operations</th>
         </tr>
-    <tr th:each="spot : ${spots}">
-        <td th:text="${spot.spotId}">100</td>
-        <td th:text="${spot.spotName}">???</td>
-        <td th:text="${spot.spotLat}">100</td>
-        <td th:text="${spot.spotLng}">100</td>
-    </tr>
+        <tr th:each="spot : ${spots}">
+            <td th:text="${spot.spotId}">100</td>
+            <td th:text="${spot.spotName}">てすと</td>
+            <td th:text="${spot.spotLat}">100</td>
+            <td th:text="${spot.spotLng}">100</td>
+            <td>   
+                <form th:action="@{detail}" method="GET">
+                    <button type="submit" class="btn btn-info" name="form">詳細</button>
+                    <input type="hidden" name="id" th:value="${spot.spotId}">
+                </form>
+            </td>
+            <td>   
+                <form th:action="@{delete}" method="POST">
+                    <button type="submit" class="btn btn-danger">削除</button>
+                    <input type="hidden" name="spotId" th:value="${spot.spotId}">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <hr />
 
     <a href="add">Add spot</a><br>
-
     <a href="/index">index</a><br>
 
 </body>
