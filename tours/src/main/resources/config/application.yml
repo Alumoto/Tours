@@ -21,4 +21,4 @@ logging:
     jdbc.sqltiming: DEBUG
 
 server:
-  port: 9090
+  port: 8080

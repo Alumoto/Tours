@@ -14,6 +14,9 @@ import com.alumoto.tours.domain.Spot;
 import com.alumoto.tours.form.SpotForm;
 import com.alumoto.tours.service.SpotService;
 
+
+import java.util.Optional;
+
 @Controller
 @RequestMapping("spot")
 public class SpotController {
@@ -26,24 +29,32 @@ public class SpotController {
     SpotForm setUpForm() {
         return new SpotForm();
     }
-    
-    @GetMapping(value="/list")
+
+    @GetMapping(value = "/list")
     String list(Model model) {
-        Page<Spot> spots = spotService.findAll(PageRequest.of(0,20));
+        Page<Spot> spots = spotService.findAll(PageRequest.of(0, 20));
         model.addAttribute("spots", spots);
         return "spot/list";
     }
-    
-    @RequestMapping(value="/add")
-    String add(@ModelAttribute("SpotForm") SpotForm spotForm){
-        return "spot/add";//これはhtmlファイルのパスを返す
+
+    @RequestMapping(value = "/add")
+    String add(@ModelAttribute("SpotForm") SpotForm spotForm) {
+        return "spot/add";// これはhtmlファイルのパスを返す
     }
 
     @PostMapping(path = "/delete")
-    String delete(@RequestParam Integer spotId){
+    String delete(@RequestParam Integer spotId) {
         spotService.delete(spotId);
         return "redirect:/spot/list";
     }
+
+    @GetMapping(value = "/detail")
+    String detail(@RequestParam Integer id, Model model){
+        Spot spot = spotService.findById(id).get();
+        model.addAttribute("Spot", spot);
+        return "spot/detail";
+    }
+
 
     @PostMapping
     String create(@Validated SpotForm form, BindingResult result, Model model) {

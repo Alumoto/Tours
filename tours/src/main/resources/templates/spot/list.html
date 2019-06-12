@@ -24,7 +24,7 @@
             <td th:text="${spot.spotLng}">100</td>
             <td>   
                 <form th:action="@{detail}" method="GET">
-                    <button type="submit" class="btn btn-info" name="form">詳細</button>
+                    <button type="submit" class="btn btn-info">詳細</button>
                     <input type="hidden" name="id" th:value="${spot.spotId}">
                 </form>
             </td>

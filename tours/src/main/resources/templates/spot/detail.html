@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Spot detail</title>
+    <div th:replace="common"></div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+
+<body>
+ 
+    <h1>Spot detail</h1>
+    <div id="map"></div>
+
+    <form th:action="@{/spot/update}" th:object="${Spot}" method="post">
+        <dl>
+            <dt><label for="spotLat">経度:</label></dt>
+            <dd><input type="text" name="spotLat" id="spotLat" disabled="disabled" th:field="*{spotLat}" th:errorclass="error_input" value="0"></dd>
+            <!-- <span th:if="${#fields.haserrors('spotLat')}" th:errors="*{spotLat}" class="error-messages">error!</span>
+            -->
+            <dt><label for="spotLng">緯度:</label></dt>
+            <dd><input type="text" name="spotLng" id="spotLng" disabled="disable" th:field="*{spotLng}" th:errorclass="error_input" value="0"></dd>
+            <!-- <span th:if="${#fields.haserrors('spotLng')}" th:errors="*{spotLng}" class="error-messages">error!</span>
+            -->
+            <br>
+            <dt><label for="spotName">名前:</label></dt>
+            <dd><input type="text" name="spotName" id="spotName" th:field="*{spotName}" th:errorclass="error_input" value="error"></dd>
+            <!-- <span th:if="${#fields.haserrors('spotName')}" th:errors="*{spotName}" class="error-messages">error!</span>
+            -->
+            <input class="btn btn-primary" type="submit" value="更新" /></input>
+        </dl>
+    </form> 
+
+    <hr/>
+
+    <a href="./list">list</a><br>
+    <a href="/index">index</a><br>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script type="text/javascript" th:src="@{/js/spotdetail.js}"></script>
+        <script type="text/javascript" th:inline="javascript">
+    $(function(){
+        /*<![CDATA[*/
+        var lng = /*[[${Spot.spotLng}]]*/ '100';
+        var lat = /*[[${Spot.spotLat}]]*/ '100';
+        var name = /*[[${Spot.spotName}]]*/ 'test'
+        document.getElementById('spotLng').value = lng;
+        document.getElementById('spotLat').value = lat;
+        document.getElementById('spotName').value = name;
+        /*]]>*/
+
+        mymap.setView([lat, lng], 17);
+    });
+    </script>
+</body>
+
+</html>
