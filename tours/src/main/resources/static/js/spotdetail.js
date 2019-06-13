@@ -1,7 +1,6 @@
 
   var mymap;
-
-
+m
   mymap = L.map('map'); 
   L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
     maxZoom: 18,

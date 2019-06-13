@@ -49,10 +49,24 @@ public class SpotController {
     }
 
     @GetMapping(value = "/detail")
-    String detail(@RequestParam Integer id, Model model){
+    String detailForm(@RequestParam Integer id, SpotForm form){
         Spot spot = spotService.findById(id).get();
-        model.addAttribute("Spot", spot);
+        BeanUtils.copyProperties(spot, form);
         return "spot/detail";
+    }
+
+
+
+    @PostMapping(value = "/update")
+    String update(@Validated SpotForm form, @RequestParam Integer id, BindingResult result) {
+        if (result.hasErrors()) {
+            return detailForm(id, form);
+        }
+        Spot spot = new Spot();
+        BeanUtils.copyProperties(form, spot);
+        spot.setSpotId(id);
+        spotService.update(spot);
+        return "redirect:spot/list";//これはURLを返す
     }
 
 
