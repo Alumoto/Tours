@@ -11,21 +11,24 @@
     <h1>Spot detail</h1>
     <div id="map"></div>
 
-    <form th:action="@{/spot/update}" th:object="${Spot}" method="post">
+    <form th:action="@{/spot/update}" th:object="${spotForm}" method="post">
         <dl>
+            <div id="disAbledInput">
             <dt><label for="spotLat">経度:</label></dt>
-            <dd><input type="text" name="spotLat" id="spotLat" disabled="disabled" th:field="*{spotLat}" th:errorclass="error_input" value="0"></dd>
+            <dd><input type="text" name="spotLat" id="spotLat" readonly th:field="*{spotLat}" th:errorclass="error_input" value="1"></dd>
             <!-- <span th:if="${#fields.haserrors('spotLat')}" th:errors="*{spotLat}" class="error-messages">error!</span>
             -->
             <dt><label for="spotLng">緯度:</label></dt>
-            <dd><input type="text" name="spotLng" id="spotLng" disabled="disable" th:field="*{spotLng}" th:errorclass="error_input" value="0"></dd>
+            <dd><input type="text" name="spotLng" id="spotLng" readonly th:field="*{spotLng}" th:errorclass="error_input" value="2"></dd>
             <!-- <span th:if="${#fields.haserrors('spotLng')}" th:errors="*{spotLng}" class="error-messages">error!</span>
             -->
             <br>
+            </div>
             <dt><label for="spotName">名前:</label></dt>
-            <dd><input type="text" name="spotName" id="spotName" th:field="*{spotName}" th:errorclass="error_input" value="error"></dd>
+            <dd><input type="text" name="spotName" id="spotName" th:field="*{spotName}" th:errorclass="error_input" value="a"></dd>
             <!-- <span th:if="${#fields.haserrors('spotName')}" th:errors="*{spotName}" class="error-messages">error!</span>
             -->
+            <input type="hidden" name="id" th:value="${param.id[0]}" />
             <input class="btn btn-primary" type="submit" value="更新" /></input>
         </dl>
     </form> 
@@ -39,12 +42,9 @@
         <script type="text/javascript" th:inline="javascript">
     $(function(){
         /*<![CDATA[*/
-        var lng = /*[[${Spot.spotLng}]]*/ '100';
-        var lat = /*[[${Spot.spotLat}]]*/ '100';
-        var name = /*[[${Spot.spotName}]]*/ 'test'
-        document.getElementById('spotLng').value = lng;
-        document.getElementById('spotLat').value = lat;
-        document.getElementById('spotName').value = name;
+        var lng = /*[[${spotForm.spotLng}]]*/ '100';
+        var lat = /*[[${spotForm.spotLat}]]*/ '100';
+        var name = /*[[${spotForm.spotName}]]*/ 'test'
         /*]]>*/
 
         mymap.setView([lat, lng], 17);

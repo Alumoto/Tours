@@ -14,9 +14,6 @@ import com.alumoto.tours.domain.Spot;
 import com.alumoto.tours.form.SpotForm;
 import com.alumoto.tours.service.SpotService;
 
-
-import java.util.Optional;
-
 @Controller
 @RequestMapping("spot")
 public class SpotController {
@@ -49,12 +46,12 @@ public class SpotController {
     }
 
     @GetMapping(value = "/detail")
-    String detailForm(@RequestParam Integer id, SpotForm form){
+    String detailForm(@RequestParam Integer id, SpotForm spotForm){
         Spot spot = spotService.findById(id).get();
-        BeanUtils.copyProperties(spot, form);
+        BeanUtils.copyProperties(spot, spotForm);
+        //model.addAttribute("spot", spot);
         return "spot/detail";
     }
-
 
 
     @PostMapping(value = "/update")
@@ -66,7 +63,7 @@ public class SpotController {
         BeanUtils.copyProperties(form, spot);
         spot.setSpotId(id);
         spotService.update(spot);
-        return "redirect:spot/list";//これはURLを返す
+        return "redirect:/spot/list";//これはURLを返す
     }
 
 

@@ -20,5 +20,6 @@ logging:
     jdbc: OFF
     jdbc.sqltiming: DEBUG
 
-server:
-  port: 8080
+security:
+  basic:
+    enabled: false
