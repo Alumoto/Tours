@@ -5,7 +5,10 @@ CREATE TABLE If NOT EXISTS SPOTS(
     SPOT_LNG FLOAT NOT NULL,
 );
 
-CREATE TABLE IF NOT EXISTS users (
-    user_name VARCHAR(100)  NOT NULL PRIMARY KEY,
-    encoded_password VARCHAR(255)
+CREATE TABLE IF NOT EXISTS USERS (
+    user_id INT NOT NULL PRIMARY KEY,
+    user_name VARCHAR(100) NOT NULL,
+    encoded_password VARCHAR(255),
+    updated_at timestamp not null default current_timestamp,
+    created_at timestamp not null default current_timestamp
 );
