@@ -6,7 +6,7 @@ CREATE TABLE If NOT EXISTS SPOTS(
 );
 
 CREATE TABLE IF NOT EXISTS USERS (
-    user_id INT NOT NULL PRIMARY KEY,
+    user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL,
     encoded_password VARCHAR(255),
     updated_at timestamp not null default current_timestamp,
