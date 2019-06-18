@@ -12,21 +12,23 @@
         <div th:classappend="${#fields.hasErrors('username')}? 'has-error'">
             <label for="username">ユーザ名</label>
             <div>
-                <input id="username" type="username" th:field="*{username}" name="username"/>
-            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error!</span>
+                <input id="username" type="username" th:field="*{username}" name="username"/><br>
+            <span class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error!</span>
             </div>
         </div>
         <div th:classappend="${#fields.hasErrors('password')}? 'has-error'">
             <label for="password">パスワード</label>
  
             <div>
-                <input id="password" type="password" th:field="*{password}" name="password"/>
-            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error!</span>
+                <input id="password" type="password" th:field="*{password}" name="password"/><br>
+            <span class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error!</span>
             </div>
         </div>
         <br>
         <input type="submit" value="新規登録"/>
     </form>
+    <hr />
+    <a href="javascript:history.back()">Return</a>
 </div>
 </body>
 </html>
