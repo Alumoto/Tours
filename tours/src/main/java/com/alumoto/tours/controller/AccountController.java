@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LoginController {
+public class AccountController {
 
     @Autowired
     UserService userServise;
@@ -29,9 +29,26 @@ public class LoginController {
     }
 
 
-    @GetMapping(path = "loginForm")
-    String loginForm(@ModelAttribute("userForm") UserForm userForm){
-        return "loginForm";
+    @RequestMapping(value="account")
+    String userForm(){
+        return "account/userForm";
+
     }
+    @PostMapping(value = "account")
+    String create(@Validated UserForm form, BindingResult bindingResult, Model model) {
+    if (bindingResult.hasErrors()) {
+        return "account/userForm";
+    }
+    User user = new User();
+    BeanUtils.copyProperties(form, user);
+    Date date = new Date();
+    user.setCreatedAt(date);
+    user.setUpdatedAt(date);
+    user.setUserId(3);
+    userServise.create(user, form.getPassword());
+    return "redirect:/acount/complete";
+}
+ 
     
+
 }   

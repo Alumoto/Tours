@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.util.Collection;
 import java.util.Date;
@@ -24,9 +25,16 @@ public class User  implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String userId;
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "user_user_id_seq")
+    @SequenceGenerator(
+        name = "user_user_id_seq",
+        sequenceName = "user_user_id_seq",
+        initialValue = 1,
+        allocationSize = 1)
+    @Column(nullable = false, unique = true)
+    private Integer userId;
 
+    @NotNull
     @Column(nullable = false)
     private String userName;
 
@@ -67,6 +75,6 @@ public class User  implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.encodedPassword;
     }
 }

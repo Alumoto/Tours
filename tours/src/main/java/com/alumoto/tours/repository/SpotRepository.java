@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface SpotRepository extends JpaRepository<Spot, Integer> {
 
     @Query("SELECT x FROM Spot x ORDER BY x.spotId")
-    Page<Spot> findAllOrderByName(Pageable pageable);
+    Page<Spot> findAllOrderById(Pageable pageable);
 
 }

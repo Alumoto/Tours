@@ -20,7 +20,7 @@ public class SpotService {
     SpotRepository spotRepository;
 
     public Page<Spot> findAll(Pageable pageable) {
-        return spotRepository.findAllOrderByName(pageable);
+        return spotRepository.findAllOrderById(pageable);
     }
 
     public Optional<Spot> findById(Integer id) {

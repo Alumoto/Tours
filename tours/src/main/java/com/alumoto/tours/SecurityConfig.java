@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/loginForm", "/account" ).permitAll()
+                .antMatchers("/loginForm", "/account" , "/h2-console").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/loginForm")
                 .failureUrl("/loginForm?error")
                 .defaultSuccessUrl("/index", true)
-                .usernameParameter("username").passwordParameter("password")
+                .usernameParameter("userName").passwordParameter("password")
                 .and()
             .logout()
                 .logoutSuccessUrl("/loginForm");
@@ -48,19 +48,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new Pbkdf2PasswordEncoder();
     }
 
-    @Configuration
-    protected static class AuthenticationConfiguration
-            extends GlobalAuthenticationConfigurerAdapter {
+    // @Configuration
+    // protected static class AuthenticationConfiguration
+    //         extends GlobalAuthenticationConfigurerAdapter {
 
-        @Autowired
-        JpaUserDetailsServiceImpl userDetailsService;
+    //     @Autowired
+    //     JpaUserDetailsServiceImpl userDetailsService;
     
-        @Override
-        public void init(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(userDetailsService)
-                .passwordEncoder(new BCryptPasswordEncoder());
-    }
-}
+    //     @Override
+    //     public void init(AuthenticationManagerBuilder auth) throws Exception {
+    //         auth.userDetailsService(userDetailsService)
+    //             .passwordEncoder(new BCryptPasswordEncoder());
+    // }
 
 }
 
