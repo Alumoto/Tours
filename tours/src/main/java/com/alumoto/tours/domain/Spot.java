@@ -15,7 +15,12 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class Spot {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "spot_spot_id_seq")
+    @SequenceGenerator(
+        name = "spot_spot_id_seq",
+        sequenceName = "spot_spot_id_seq",
+        initialValue = 1,
+        allocationSize = 1)
     private Integer spotId;
 
     @NotNull

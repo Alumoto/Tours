@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class UserForm {
 
     @NotNull
-    String userName;
+    String username;
 
     @NotNull
     String password;

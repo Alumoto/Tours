@@ -18,7 +18,6 @@ logging:
     jdbc: OFF
     jdbc.sqltiming: DEBUG
 
-security:
-  basic:
-    enabled: false
+
+      
 

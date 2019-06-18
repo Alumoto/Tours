@@ -20,61 +20,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "users")
 @Data
 //@ToString(exclude = "tours")
-public class User  implements UserDetails {
-
-    private static final long serialVersionUID = 1L;
+public class User  {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "user_user_id_seq")
-    @SequenceGenerator(
-        name = "user_user_id_seq",
-        sequenceName = "user_user_id_seq",
-        initialValue = 1,
-        allocationSize = 1)
-    @Column(nullable = false, unique = true)
-    private Integer userId;
-
-    @NotNull
-    @Column(nullable = false)
-    private String userName;
+    private String username;
 
     @JsonIgnore
     private String encodedPassword;
 
-    @Column(nullable=false, updatable=false)
-    private Date createdAt;
- 
-    @Column(nullable=false)
-    private Date updatedAt;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
- 
-    @Override
-    public String getUsername() {
-        return this.userName;
-    }
-
-    public boolean isAccountNonExpired() {
-        return true;
-    }
- 
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    public boolean isEnabled() {
-        return true;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.encodedPassword;
-    }
 }

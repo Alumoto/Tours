@@ -9,11 +9,11 @@
 <div class = "container">
     <h1>ユーザー登録</h1>
         <form  th:action="@{/account}" action="/account" th:object="${userForm}" method="post">
-        <div th:classappend="${#fields.hasErrors('userName')}? 'has-error'">
-            <label for="userName">ユーザ名</label>
+        <div th:classappend="${#fields.hasErrors('username')}? 'has-error'">
+            <label for="username">ユーザ名</label>
             <div>
-                <input id="userName" type="userName" th:field="*{userName}" name="userName"/>
-            <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">error!</span>
+                <input id="username" type="username" th:field="*{username}" name="username"/>
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error!</span>
             </div>
         </div>
         <div th:classappend="${#fields.hasErrors('password')}? 'has-error'">

@@ -6,8 +6,7 @@ CREATE TABLE If NOT EXISTS SPOTS(
 );
 
 CREATE TABLE IF NOT EXISTS USERS (
-    user_id INT PRIMARY KEY,
-    user_name VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL PRIMARY KEY,
     encoded_password VARCHAR(255),
     updated_at timestamp not null default current_timestamp(),
     created_at timestamp not null default current_timestamp()

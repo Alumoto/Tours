@@ -40,11 +40,7 @@ public class AccountController {
         return "account/userForm";
     }
     User user = new User();
-    BeanUtils.copyProperties(form, user);
-    Date date = new Date();
-    user.setCreatedAt(date);
-    user.setUpdatedAt(date);
-    user.setUserId(3);
+    user.setUsername(form.getUsername());
     userServise.create(user, form.getPassword());
     return "redirect:/acount/complete";
 }
