@@ -3,19 +3,23 @@
 
 <head>
     <title>index</title>
-    <div th:replace="common"></div>
+    <div th:replace="common::head-com()"></div>
     <link rel="stylesheet" href="style/mystyle.css">
 
 <body>
-    <h1>Index.html</h1>
-    <p>たびはここからはじまる</p><br>
+        <div th:replace="common::nav-bar()"></div>
+    <div class="container">
+
+        <h1>Index.html</h1>
+        <p>たびはここからはじまる</p><br>
+        <br>
+        <a href="map">map</a><br>
+        <a href="spot/list">spot list</a><br>
     <br>
-    <a href="map">map</a><br>
-    <a href="spot/list">spot list</a><br>
-<br>
-    <form role="form" id="logout" th:action="@{/logout}" method="post">
-    <button type="submit">Logout</button>
-    </form>
+        <form role="form" id="logout" th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+        </form>
+</div>
 </body>
 
 </html>

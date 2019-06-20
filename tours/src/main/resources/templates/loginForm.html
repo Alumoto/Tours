@@ -3,10 +3,11 @@
 
 <head>
     <title>Login Form</title>
-    <div th:replace="common"></div>
+    <div th:replace="common::head-com()"></div>
 
 <body>
     <div class="container">
+        
         <h1>Login</h1>
         <form class="login-signin" method="post" th:action="@{/login}">
             <h2 class="form-signin-heading">Login Form</h2>

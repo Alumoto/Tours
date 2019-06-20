@@ -3,11 +3,11 @@
 
 <head>
     <title>Spot detail</title>
-    <div th:replace="common"></div>
+    <div th:replace="common::head-com()"></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
 
 <body>
- 
+    <div th:replace="common::nav-bar()"></div>
     <h1>Spot detail</h1>
     <div id="map"></div>
 

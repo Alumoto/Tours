@@ -1,10 +1,9 @@
 package com.alumoto.tours.service;
 
 import com.alumoto.tours.domain.User;
-import lombok.Data;
 import org.springframework.security.core.authority.AuthorityUtils;
 
-@Data
+
 public class LoginUserDetails extends org.springframework.security.core.userdetails.User {
     
     private static final long serialVersionUID = 1L;
