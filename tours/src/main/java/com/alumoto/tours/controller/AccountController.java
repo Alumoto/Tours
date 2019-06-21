@@ -2,6 +2,7 @@ package com.alumoto.tours.controller;
 
 import com.alumoto.tours.domain.User;
 import com.alumoto.tours.form.UserForm;
+import com.alumoto.tours.repository.UserRepository;
 import com.alumoto.tours.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

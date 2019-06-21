@@ -12,6 +12,11 @@ spring:
       settings:
         web-allow-others: true
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    
+
 
 logging:
   level:

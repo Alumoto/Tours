@@ -21,4 +21,7 @@ public class User  {
     @JsonIgnore
     private String encodedPassword;
 
+    @Column
+    private Boolean enabled;
+
 }
