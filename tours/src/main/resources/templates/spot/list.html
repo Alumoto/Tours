@@ -15,7 +15,8 @@
             <th>ID</th>
             <th>Name</th>
             <th>Latitude</th>
-            <th>longitude</th>
+            <th>Longitude</th>
+            <th>Created by</th>
             <th colspan="2">operations</th>
         </tr>
         <tr th:each="spot : ${spots}">
@@ -23,6 +24,7 @@
             <td th:text="${spot.spotName}">てすと</td>
             <td th:text="${spot.spotLat}">100</td>
             <td th:text="${spot.spotLng}">100</td>
+            <td th:text="${spot.createUser}">hoge</td>
             <td>   
                 <form th:action="@{detail}" method="GET">
                     <button type="submit" class="btn btn-info">詳細</button>

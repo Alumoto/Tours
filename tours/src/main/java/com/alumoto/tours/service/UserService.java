@@ -1,5 +1,7 @@
 package com.alumoto.tours.service;
 
+import java.util.Optional;
+
 import com.alumoto.tours.domain.User;
 import com.alumoto.tours.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +13,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserService {
     @Autowired
-    UserRepository UserRepository;
+    UserRepository userRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
  
+    public Optional<User> findByUsername(String username){
+        return Optional.ofNullable(userRepository.getOne(username));
+    }
+
     public User create(User User, String rawPassword) {
         String encodedPassword = passwordEncoder.encode(rawPassword);
         User.setEncodedPassword(encodedPassword);
         User.setEnabled(true);
-        return UserRepository.save(User);
+        return userRepository.save(User);
     }
 }

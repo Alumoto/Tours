@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.alumoto.tours.domain.Spot;
+import com.alumoto.tours.domain.User;
 import com.alumoto.tours.form.SpotForm;
 import com.alumoto.tours.service.SpotService;
+import com.alumoto.tours.service.UserService;
 
 @Controller
 @RequestMapping("spot")
@@ -21,6 +25,9 @@ public class SpotController {
 
     @Autowired
     SpotService spotService;
+
+    @Autowired
+    UserService userService;
 
     @ModelAttribute
     SpotForm setUpForm() {
@@ -68,12 +75,15 @@ public class SpotController {
 
 
     @PostMapping
-    String create(@Validated SpotForm form, BindingResult result, Model model) {
+    String create(@Validated SpotForm form, BindingResult result, Model model, HttpServletRequest httpServletRequest) {
         if (result.hasErrors()) {
             return list(model);
         }
+        String username = httpServletRequest.getRemoteUser();
+        User user = userService.findByUsername(username).get();
         Spot spot = new Spot();
         BeanUtils.copyProperties(form, spot);
+        spot.setCreatedUser(user);
         spotService.create(spot);
         return "redirect:spot/list";//これはURLを返す
     }

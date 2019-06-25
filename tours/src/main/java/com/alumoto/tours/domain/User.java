@@ -1,7 +1,8 @@
 package com.alumoto.tours.domain;
 
-
 import lombok.Data;
+
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -23,5 +24,8 @@ public class User  {
 
     @Column
     private Boolean enabled;
+
+    @OneToMany(mappedBy = "createdUser")
+    private List<Spot> spotList;
 
 }

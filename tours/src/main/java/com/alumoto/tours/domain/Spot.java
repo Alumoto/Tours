@@ -35,4 +35,7 @@ public class Spot {
     @Size(min = 1, max = 127)
     @Column(nullable = false)
     private String spotName;
+
+    @ManyToOne
+    private User createdUser;
 }
