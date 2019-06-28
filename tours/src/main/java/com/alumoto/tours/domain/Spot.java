@@ -37,5 +37,6 @@ public class Spot {
     private String spotName;
 
     @ManyToOne
+    //@JoinColumn(nullable = true, name = "username")
     private User createdUser;
 }

@@ -1,6 +1,7 @@
 package com.alumoto.tours.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "users")
 @Data
-//@ToString(exclude = "tours")
+@ToString(exclude = "spotList")
 public class User  {
 
     @Id

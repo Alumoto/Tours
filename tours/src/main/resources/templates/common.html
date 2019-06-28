@@ -36,12 +36,13 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span sec:authentication="principal.user.username">hoge</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/user">User Page</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <form method="POST" action="/logout" name="logout">
+                            <form method="POST" th:action="@{/logout}" name="logout">
                             <a class="dropdown-item" href="javascript:logout.submit()">Logout</a>
+                            </form>
                         </div>
                     </li>
                 </ul>

@@ -24,7 +24,7 @@
             <td th:text="${spot.spotName}">てすと</td>
             <td th:text="${spot.spotLat}">100</td>
             <td th:text="${spot.spotLng}">100</td>
-            <td th:text="${spot.createUser}">hoge</td>
+            <td th:text="${spot.createdUser.username}">hoge</td>
             <td>   
                 <form th:action="@{detail}" method="GET">
                     <button type="submit" class="btn btn-info">詳細</button>
