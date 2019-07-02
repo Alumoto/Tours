@@ -5,16 +5,34 @@
     <title>index</title>
     <div th:replace="common::head-com()"></div>
     <link rel="stylesheet" href="style/mystyle.css">
+</head>
 
 <body>
-        <div th:replace="common::nav-bar()"></div>
+
+    <div th:replace="common::nav-bar()"></div>
+
     <div class="container">
 
-        <h1>Index.html</h1>
-        <p><span sec:authentication="principal.user.username">hoge</span>のたびはここからはじまる</p><br>
-        <br>
-        <a href="map">map</a><br>
-        <a href="spot/list">spot list</a><br>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card h-60">
+                <div class="card-body">
+                    <h5 class="card-title">ツアーをつくる</h5>
+                    <p class="card-text">スポットとアイテムをつなげて，楽しいツアーをつくろう．</p>
+                    <a href="edit/main" class="stretched-link"> Go </a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card h-60">
+                <div class="card-body">
+                    <h5 class="card-title">ツアーにでる</h5>
+                    <p class="card-text">みんなが作ったツアーで，楽しい旅に出よう．</p>
+                    <a href="journey/main" class="stretched-link"> Go </a>
+                </div>
+                </div>
+            </div>
+            </div>
     <br>
 </div>
 </body>
