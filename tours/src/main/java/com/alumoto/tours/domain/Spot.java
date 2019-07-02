@@ -39,4 +39,7 @@ public class Spot {
     @ManyToOne
     //@JoinColumn(nullable = true, name = "username")
     private User createdUser;
+
+    @ManyToOne
+    private Tour parentTour;
 }

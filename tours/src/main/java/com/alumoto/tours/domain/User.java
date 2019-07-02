@@ -2,14 +2,9 @@ package com.alumoto.tours.domain;
 
 import lombok.Data;
 import lombok.ToString;
-
 import java.util.List;
-
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 
 @Entity
 @Table(name = "users")
