@@ -21,7 +21,7 @@ public class User  {
     @Column
     private Boolean enabled;
 
-    @OneToMany(mappedBy = "createdUser")
+    @OneToMany(mappedBy = "creator")
     private List<Spot> spotList;
 
 }

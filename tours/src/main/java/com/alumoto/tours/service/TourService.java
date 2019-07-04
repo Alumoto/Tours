@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import com.alumoto.tours.domain.Tour;
+import com.alumoto.tours.domain.User;
 import com.alumoto.tours.repository.TourRepository;
 
 @Service
@@ -16,12 +17,10 @@ public class TourService {
     @Autowired
     TourRepository tourRepository;
 
-    public Page<Tour> findAll(Pageable pageable) {
-        return tourRepository.findAllOrderById(pageable);
-    }
 
-    public Optional<Tour> findById(Integer id) {
-        return tourRepository.findById(id);
+
+    public Page<Tour> findByCreator(Pageable pageable) {
+        return tourRepository.findByCreator(pageable);
     }
 
     public Tour create(Tour tour) {

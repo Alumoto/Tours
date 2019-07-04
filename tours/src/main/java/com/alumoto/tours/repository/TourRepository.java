@@ -9,8 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TourRepository extends JpaRepository<Tour, Integer>{
 
-    @Query("SELECT x FROM Spot x ORDER BY x.tourId")
-    Page<Tour> findAllOrderById(Pageable pageable);
+    Page<Tour> findByCreator(Pageable pageable);
 
 }
 

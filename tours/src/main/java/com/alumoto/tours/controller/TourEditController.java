@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.alumoto.tours.domain.Spot;
 import com.alumoto.tours.domain.User;
+import com.alumoto.tours.domain.Tour;
 import com.alumoto.tours.form.TourForm;
 import com.alumoto.tours.service.SpotService;
 import com.alumoto.tours.service.UserService;
@@ -38,5 +39,13 @@ public class TourEditController {
         return new TourForm();
     }
 
+    @GetMapping(value = "/main")
+    String list(Model model) {
+        Page<Tour> tours = tourService.findByCreator(PageRequest.of(0, 20));
+        model.addAttribute("tours", tours);
+        return "tour/list";
+    }
+
+    
 
 }

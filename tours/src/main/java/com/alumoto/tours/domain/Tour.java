@@ -1,6 +1,7 @@
 package com.alumoto.tours.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import java.util.List;
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "tours")
 @Data
+@NoArgsConstructor
 @ToString(exclude = "spotList")
 public class Tour  {
 
@@ -24,6 +26,9 @@ public class Tour  {
 
     @NotNull
     private String tourName;
+
+    @ManyToOne
+    private User creator;
 
     @OneToMany(mappedBy = "parentTour")
     private List<Spot> spotList;

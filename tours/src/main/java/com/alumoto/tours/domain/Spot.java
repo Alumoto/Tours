@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Spot {
+
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "spot_spot_id_seq")
     @SequenceGenerator(
@@ -36,9 +37,12 @@ public class Spot {
     @Column(nullable = false)
     private String spotName;
 
+    @NotNull
+    private int spotNo;
+
     @ManyToOne
     //@JoinColumn(nullable = true, name = "username")
-    private User createdUser;
+    private User creator;
 
     @ManyToOne
     private Tour parentTour;

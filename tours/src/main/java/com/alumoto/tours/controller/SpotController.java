@@ -83,7 +83,7 @@ public class SpotController {
         User user = userService.findByUsername(username).get();
         Spot spot = new Spot();
         BeanUtils.copyProperties(form, spot);
-        spot.setCreatedUser(user);
+        spot.setCreator(user);
         spotService.create(spot);
         return "redirect:spot/list";//これはURLを返す
     }
