@@ -14,7 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" th:href="@{/css/mystyle.css}">
+    <link rel="stylesheet"  type="text/css" th:href="@{/css/mystyle.css}">
 </span>
 
 <div id="nav-ber" th:fragment="nav-bar()">
@@ -28,11 +28,8 @@
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/map">Map</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="spot/list">Spot list</a>
+                    <li class="nav-item active border-left border-right">
+                        <a class="nav-link" href="/setup/main">ツアーをつくる</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

@@ -17,5 +17,8 @@ public class SpotForm {
     @NotNull
     @Size(min = 1, max = 127)
     String spotName;
+
+    @NotNull
+    int tourId;
 }
     

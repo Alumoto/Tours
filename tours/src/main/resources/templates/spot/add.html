@@ -12,7 +12,7 @@
         <h1>Add spot</h1>
         <div id="map"></div>
 
-    <form th:action="@{/spot}" th:object="${spotForm}" method="post" name="addspot">
+    <form th:action="@{create}" th:object="${spotForm}" method="post" name="addspot">
         <dl>
             <dt><label for="spotLat">経度:</label></dt>
             <dd><input type="text" name="spotLat" id="spotLat" th:field="*{spotLat}" th:errorclass="error_input"></dd>
@@ -27,14 +27,13 @@
             <dd><input type="text" name="spotName" id="spotName" th:field="*{spotName}" th:errorclass="error_input"></dd>
             <!-- <span th:if="${#fields.haserrors('spotName')}" th:errors="*{spotName}" class="error-messages">error!</span>
             -->
+            <input type=hidden name="tourId" th:value="${param.tourId[0]}" />
             <button class="btn btn-lg btn-primary btn-block" type"button" onclick="javascript:addspot.submit()">登録</button>
         </dl>
     </form> 
 
     <hr/>
 
-    <a href="./list">list</a><br>
-    <a href="/index">index</a><br>
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
     <script type="text/javascript" th:src="@{/js/addspot.js}"></script>
     </div>

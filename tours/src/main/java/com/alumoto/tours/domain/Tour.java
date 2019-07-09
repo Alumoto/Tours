@@ -25,12 +25,15 @@ public class Tour  {
     private Integer tourId;
 
     @NotNull
-    private String tourName;
+    private String tourTitle;
+
+    @NotNull
+    private String tourDescription;
 
     @ManyToOne
     private User creator;
 
-    @OneToMany(mappedBy = "parentTour")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentTour")
     private List<Spot> spotList;
     
 }

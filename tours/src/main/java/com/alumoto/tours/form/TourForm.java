@@ -9,6 +9,9 @@ public class TourForm {
 
     @NotNull
     @Size(min = 1, max = 30)
-    String tourName;
+    String tourTitle;
+    @NotNull
+    @Size(min = 1, max = 300)
+    String tourDescription;
 }
     

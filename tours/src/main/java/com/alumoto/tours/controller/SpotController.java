@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.alumoto.tours.domain.Spot;
 import com.alumoto.tours.domain.User;
+import com.alumoto.tours.domain.Tour;
 import com.alumoto.tours.form.SpotForm;
 import com.alumoto.tours.service.SpotService;
 import com.alumoto.tours.service.UserService;
+import com.alumoto.tours.service.TourService;
 
 @Controller
-@RequestMapping("spot")
+@RequestMapping("/setup/spot/")
 public class SpotController {
 
 
@@ -29,12 +31,15 @@ public class SpotController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    TourService tourService;
+
     @ModelAttribute
     SpotForm setUpForm() {
         return new SpotForm();
     }
 
-    @GetMapping(value = "/list")
+
     String list(Model model) {
         Page<Spot> spots = spotService.findAll(PageRequest.of(0, 20));
         model.addAttribute("spots", spots);
@@ -42,19 +47,21 @@ public class SpotController {
     }
 
     @RequestMapping(value = "/add")
-    String add(@ModelAttribute("SpotForm") SpotForm spotForm) {
+    String add(@ModelAttribute("SpotForm") SpotForm spotForm, @RequestParam Integer tourId, Model model) {
+        // Tour tour = tourService.findById(tourId).get();
+        // model.addAttribute("Tour", tour);
         return "spot/add";// これはhtmlファイルのパスを返す
     }
 
     @PostMapping(path = "/delete")
-    String delete(@RequestParam Integer spotId) {
+    String delete(@RequestParam Integer spotId, @RequestParam Integer tourId) {
         spotService.delete(spotId);
-        return "redirect:/spot/list";
+        return "redirect:/setup/detail?tourId="+tourId;
     }
 
     @GetMapping(value = "/detail")
-    String detailForm(@RequestParam Integer id, SpotForm spotForm){
-        Spot spot = spotService.findById(id).get();
+    String detailForm(@RequestParam Integer spotId, @RequestParam Integer tourId, SpotForm spotForm){
+        Spot spot = spotService.findById(spotId).get();
         BeanUtils.copyProperties(spot, spotForm);
         //model.addAttribute("spot", spot);
         return "spot/detail";
@@ -62,19 +69,21 @@ public class SpotController {
 
 
     @PostMapping(value = "/update")
-    String update(@Validated SpotForm form, @RequestParam Integer id, BindingResult result) {
+    String update(@Validated SpotForm form, @RequestParam Integer spotId, @RequestParam Integer tourId, BindingResult result) {
         if (result.hasErrors()) {
-            return detailForm(id, form);
+            return detailForm(spotId, tourId, form);
         }
-        Spot spot = new Spot();
-        BeanUtils.copyProperties(form, spot);
-        spot.setSpotId(id);
+        Spot spot = spotService.findById(spotId).get();
+        spot.setSpotLng(form.getSpotLng());
+        spot.setSpotLat(form.getSpotLat()); 
+        spot.setSpotName(form.getSpotName());   
+
         spotService.update(spot);
-        return "redirect:/spot/list";//これはURLを返す
+        return "redirect:/setup/detail?tourId="+tourId;//これはURLを返す
     }
 
 
-    @PostMapping
+    @PostMapping(value = "/create")
     String create(@Validated SpotForm form, BindingResult result, Model model, HttpServletRequest httpServletRequest) {
         if (result.hasErrors()) {
             return list(model);
@@ -82,10 +91,24 @@ public class SpotController {
         String username = httpServletRequest.getRemoteUser();
         User user = userService.findByUsername(username).get();
         Spot spot = new Spot();
-        BeanUtils.copyProperties(form, spot);
+        Tour tour = tourService.findById(form.getTourId()).get();
+        int spotNo;
+        if(tour.getSpotList() == null){
+            spotNo = 1;
+        }else{
+            spotNo = tour.getSpotList().size() + 1;
+        }
+
+        spot.setSpotLng(form.getSpotLng());
+        spot.setSpotLat(form.getSpotLat()); 
+        spot.setSpotName(form.getSpotName());       
         spot.setCreator(user);
+        spot.setParentTour(tour);
+        spot.setSpotNo(spotNo);
+
         spotService.create(spot);
-        return "redirect:spot/list";//これはURLを返す
+
+        return "redirect:/setup/detail?tourId="+tour.getTourId();//これはURLを返す
     }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
+import java.util.List;
 import com.alumoto.tours.domain.Tour;
 import com.alumoto.tours.domain.User;
 import com.alumoto.tours.repository.TourRepository;
@@ -19,8 +20,8 @@ public class TourService {
 
 
 
-    public Page<Tour> findByCreator(Pageable pageable) {
-        return tourRepository.findByCreator(pageable);
+    public List<Tour> findByCreator(User creator) {
+        return tourRepository.findByCreatorOrderByTourId(creator);
     }
 
     public Tour create(Tour tour) {
@@ -34,4 +35,8 @@ public class TourService {
     public void delete(Integer id) {
         tourRepository.deleteById(id);
     }
+
+	public Optional<Tour> findById(Integer id) {
+		return tourRepository.findById(id);
+	}
 }

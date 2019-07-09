@@ -11,7 +11,7 @@
     <h1>Spot detail</h1>
     <div id="map"></div>
 
-    <form th:action="@{/spot/update}" th:object="${spotForm}" method="post">
+    <form th:action="@{update}" th:object="${spotForm}" method="post">
         <dl>
             <div id="disAbledInput">
             <dt><label for="spotLat">経度:</label></dt>
@@ -28,7 +28,8 @@
             <dd><input type="text" name="spotName" id="spotName" th:field="*{spotName}" th:errorclass="error_input" value="a"></dd>
             <!-- <span th:if="${#fields.haserrors('spotName')}" th:errors="*{spotName}" class="error-messages">error!</span>
             -->
-            <input type="hidden" name="id" th:value="${param.id[0]}" />
+            <input type="hidden" name="spotId" th:value="${param.spotId[0]}" />
+            <input type="hidden" name="tourId" th:value="${param.tourId[0]}" />
             <input class="btn btn-primary" type="submit" value="更新" /></input>
         </dl>
     </form> 
