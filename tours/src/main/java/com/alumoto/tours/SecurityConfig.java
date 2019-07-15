@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
+
 
 
 
@@ -34,7 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username").passwordParameter("password")
                 .and()
             .logout()
-                .logoutSuccessUrl("/loginForm");
+                .logoutSuccessUrl("/loginForm")
+                .and()
+            .rememberMe()
+                .useSecureCookie(true)
+                .tokenRepository(new InMemoryTokenRepositoryImpl());
+
     }
 
     @Bean

@@ -84,13 +84,13 @@ public class TourSetUpController {
     }
 
 
-    @GetMapping(value = "/detail")
+    @GetMapping(value = "/edit")
     String detailForm(@RequestParam Integer tourId, TourForm tourForm, Model model){
         Tour tour = tourService.findById(tourId).get();
         BeanUtils.copyProperties(tour, tourForm);
         tour.getSpotList().sort((a,b)-> a.getSpotNo() - b.getSpotNo());
         model.addAttribute("spots", tour.getSpotList());
-        return "tour/detail";
+        return "tour/edit";
     }
 
     @PostMapping(value = "/update")

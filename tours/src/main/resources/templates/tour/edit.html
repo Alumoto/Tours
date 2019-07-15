@@ -2,18 +2,18 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Tour detail</title>
+    <title>Tour edit</title>
     <div th:replace="common::head-com()"></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
 
 <body>
     <div th:replace="common::nav-bar()"></div>
     <div class="container">
-    <h1>Tour detail</h1>
+    <h1>Tour edit</h1>
 
     <form id="tourForm" th:action="@{update}" th:object="${tourForm}" method="post">
         <dl>
-            <dt><label for="tourName">名前:</label></dt>
+            <dt><label for="tourTitle">ツアータイトル:</label></dt>
             <dd><input type="text" name="tourTitle" id="tourTitle" th:field="*{tourTitle}" th:errorclass="error_input" value="a"></dd>
             <!-- <span th:if="${#fields.haserrors('tourName')}" th:errors="*{tourName}" class="error-messages">error!</span>
             -->
@@ -39,7 +39,7 @@
                         <td th:text="${spot.spotLng}">100</td>
                         <td>   
                             <form th:action="@{spot/detail}" method="GET">
-                                <button type="submit" class="btn btn-info">詳細</button>
+                                <button type="submit" class="btn btn-info">編集</button>
                                 <input type="hidden" name="spotId" th:value="${spot.spotId}" />
                                 <input type="hidden" name="tourId" th:value="${param.tourId[0]}" />
                             </form>
@@ -60,8 +60,9 @@
                 </div>
                 </dd>
         </dl>
+        <br>
         <input form="tourForm" type=hidden name="tourId" th:value="${param.tourId[0]}" />
-        <input form="tourForm" class="btn btn-primary" type="submit" value="更新" /></input>
+        <input form="tourForm" class="btn btn-primary" type="submit" value="完了" /></input>
 
 
     <hr/>
