@@ -22,7 +22,7 @@ import com.alumoto.tours.service.TourService;
 
 @Controller
 @RequestMapping("/setup/spot/")
-public class SpotController {
+public class SpotSetUpController {
 
 
     @Autowired
@@ -56,7 +56,7 @@ public class SpotController {
     @PostMapping(path = "/delete")
     String delete(@RequestParam Integer spotId, @RequestParam Integer tourId) {
         spotService.delete(spotId);
-        return "redirect:/setup/detail?tourId="+tourId;
+        return "redirect:/setup/edit?tourId="+tourId;
     }
 
     @GetMapping(value = "/detail")
@@ -79,7 +79,7 @@ public class SpotController {
         spot.setSpotName(form.getSpotName());   
 
         spotService.update(spot);
-        return "redirect:/setup/detail?tourId="+tourId;//これはURLを返す
+        return "redirect:/setup/edit?tourId="+tourId;//これはURLを返す
     }
 
 
@@ -108,7 +108,7 @@ public class SpotController {
 
         spotService.create(spot);
 
-        return "redirect:/setup/detail?tourId="+tour.getTourId();//これはURLを返す
+        return "redirect:/setup/edit?tourId="+tour.getTourId();//これはURLを返す
     }
 
 }

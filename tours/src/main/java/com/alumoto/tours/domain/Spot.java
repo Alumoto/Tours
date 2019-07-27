@@ -41,10 +41,10 @@ public class Spot {
     @NotNull
     private int spotNo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     //@JoinColumn(nullable = true, name = "username")
     private User creator;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Tour parentTour;
 }
