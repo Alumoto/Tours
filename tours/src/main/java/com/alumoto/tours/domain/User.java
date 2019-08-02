@@ -24,4 +24,7 @@ public class User  {
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     private List<Spot> spotList;
 
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
+    private List<Content> contentList;
+
 }

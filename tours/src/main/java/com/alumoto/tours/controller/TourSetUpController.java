@@ -83,6 +83,19 @@ public class TourSetUpController {
             return "tour/done";
     }
 
+    @GetMapping(value = "/delete_conf")
+    String deleteConf(@RequestParam Integer tourId, Model model){
+            Tour tour = tourService.findById(tourId).get();
+            model.addAttribute("tourTitle", tour.getTourTitle());
+            model.addAttribute("tourId", tour.getTourId());
+            return "tour/delete";
+    }
+
+    @PostMapping(path = "/delete")
+    String delete(@RequestParam Integer tourId) {
+        tourService.delete(tourId);
+        return "redirect:/setup/main";
+    }
 
     @GetMapping(value = "/edit")
     String detailForm(@RequestParam Integer tourId, TourForm tourForm, Model model){

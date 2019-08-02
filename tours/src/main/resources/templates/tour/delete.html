@@ -9,11 +9,13 @@
 <body>
     <div th:replace="common::nav-bar()"></div>
     <div class = "container">
-        <h1 class="text-success">おめでとうございます！</h1>
-        <br>
-        <h4>新しいツアー <span class="text-primary" th:text="${tourTitle}">ツアータイトル</span> が作成されました。<br> 
-        <a th:href="@{edit(tourId=${tourId})}">ツアーにスポットを追加しましょう！</a></h4>
-
+        <h4><span class="text-primary" th:text="${tourTitle}">ツアータイトル</span> を削除しますか？<br></h4>
+        <span style="color: red">この操作は取り消せません！</span>
+        <form th:action="@{delete}" method="POST">
+            <button type="submit" class="btn btn-danger">削除</button>
+            <input type="hidden" name="tourId" th:value="${tourId}">
+        </form>
+        <a th:href="@{detail(tourId=${tourId})}" class="btn btn-primary">戻る</a></h4>
 
 
         <hr/>

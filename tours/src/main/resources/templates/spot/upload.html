@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Spot list</title>
+    <div th:replace="common::head-com()"></div>
+    <script type="text/javascript" th:src="@{/js/data_upload_view.js}" />
+
+<body>
+    <div th:replace="common::nav-bar()"></div>
+    <div class="container">
+        <h2>ファイルアップロード</h2>
+        <form method="post" enctype="multipart/form-data" th:action="@{/upload}" th:object="${form}" >
+            <input th:field="*{file}" type="file" multiple/>
+            <input type="submit" value="送信する"/>
+        </form>
+    </div>
+</body>
+
+</html>

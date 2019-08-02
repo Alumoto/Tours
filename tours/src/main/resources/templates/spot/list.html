@@ -28,14 +28,8 @@
             <td th:text="${spot.creator.username}">hoge</td>
             <td>   
                 <form th:action="@{detail}" method="GET">
-                    <button type="submit" class="btn btn-info">編集</button>
+                    <button type="submit" class="btn btn-info">編集する</button>
                     <input type="hidden" name="id" th:value="${spot.spotId}">
-                </form>
-            </td>
-            <td>   
-                <form th:action="@{delete}" method="POST">
-                    <button type="submit" class="btn btn-danger">削除</button>
-                    <input type="hidden" name="spotId" th:value="${spot.spotId}">
                 </form>
             </td>
         </tr>

@@ -39,14 +39,7 @@
                         <td th:text="${spot.spotLng}">100</td>
                         <td>   
                             <form th:action="@{spot/detail}" method="GET">
-                                <button type="submit" class="btn btn-info">編集</button>
-                                <input type="hidden" name="spotId" th:value="${spot.spotId}" />
-                                <input type="hidden" name="tourId" th:value="${param.tourId[0]}" />
-                            </form>
-                        </td>
-                        <td>   
-                            <form th:action="@{spot/delete}" method="POST">
-                                <button type="submit" class="btn btn-danger">削除</button>
+                                <button type="submit" class="btn btn-info">編集する</button>
                                 <input type="hidden" name="spotId" th:value="${spot.spotId}" />
                                 <input type="hidden" name="tourId" th:value="${param.tourId[0]}" />
                             </form>
@@ -66,7 +59,7 @@
 
 
     <hr/>
-    <a href="delete_conf" class="btn btn-danger">このツアーを削除する</a>
+    <a th:href="@{delete_conf(tourId=${param.tourId[0]})}" class="btn btn-danger">このツアーを削除する</a>
     
 
     </div>

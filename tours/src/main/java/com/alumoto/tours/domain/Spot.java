@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import java.util.List;
+
 @Entity
 @Table(name = "spots")
 @Data
@@ -47,4 +49,9 @@ public class Spot {
 
     @ManyToOne
     private Tour parentTour;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentSpot")
+    private List<Content> contentList;
+
+
 }
