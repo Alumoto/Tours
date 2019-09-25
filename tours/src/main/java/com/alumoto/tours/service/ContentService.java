@@ -22,9 +22,9 @@ public class ContentService {
     @Autowired
     ContentRepository contentRepository;
 
-    public Page<Content> findAll(Pageable pageable) {
-        return contentRepository.findAllOrderById(pageable);
-    }
+    // public Page<Content> findAll(Pageable pageable) {
+    //     return contentRepository.findAllOrderById(pageable);
+    // }
 
     public Optional<Content> findById(Integer id) {
         return contentRepository.findById(id);

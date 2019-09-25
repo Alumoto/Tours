@@ -15,15 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 import com.alumoto.tours.domain.Spot;
 import com.alumoto.tours.domain.User;
 import com.alumoto.tours.domain.Tour;
-import com.alumoto.tours.form.SpotForm;
-import com.alumoto.tours.service.SpotService;
-import com.alumoto.tours.service.UserService;
-import com.alumoto.tours.service.TourService;
+import com.alumoto.tours.form.ContentForm;
+import com.alumoto.tours.service.*;
 
 @Controller
-@RequestMapping("/setup/spot/")
-public class SpotSetUpController {
+@RequestMapping("/setup/content/")
+public class ContentSetUpController {
 
+
+    @Autowired
+    ContentService contentService;
 
     @Autowired
     SpotService spotService;
@@ -35,22 +36,22 @@ public class SpotSetUpController {
     TourService tourService;
 
     @ModelAttribute
-    SpotForm setUpForm() {
-        return new SpotForm();
+    ContentForm setUpForm() {
+        return new ContentForm();
     }
 
 
     String list(Model model) {
         Page<Spot> spots = spotService.findAll(PageRequest.of(0, 20));
         model.addAttribute("spots", spots);
-        return "spot/list";
+        return "content/list";
     }
 
     @RequestMapping(value = "/add")
-    String add(@ModelAttribute("SpotForm") SpotForm spotForm, @RequestParam Integer tourId, Model model) {
+    String add(@ModelAttribute("ContentForm") ContentForm contentForm, @RequestParam Integer spotId, Model model) {
         // Tour tour = tourService.findById(tourId).get();
         // model.addAttribute("Tour", tour);
-        return "spot/add";// これはhtmlファイルのパスを返す
+        return "content/add";// これはhtmlファイルのパスを返す
     }
 
     @PostMapping(path = "/delete")
@@ -69,7 +70,7 @@ public class SpotSetUpController {
     }
 
     @GetMapping(value = "/detail")
-    String detailForm(@RequestParam Integer spotId, @RequestParam Integer tourId, SpotForm spotForm){
+    String detailForm(@RequestParam Integer spotId, @RequestParam Integer tourId, ContentForm spotForm){
         Spot spot = spotService.findById(spotId).get();
         BeanUtils.copyProperties(spot, spotForm);
         //model.addAttribute("spot", spot);
@@ -78,7 +79,7 @@ public class SpotSetUpController {
 
 
     @PostMapping(value = "/update")
-    String update(@Validated SpotForm form, @RequestParam Integer spotId, @RequestParam Integer tourId, BindingResult result) {
+    String update(@Validated ContentForm form, @RequestParam Integer spotId, @RequestParam Integer tourId, BindingResult result) {
         if (result.hasErrors()) {
             return detailForm(spotId, tourId, form);
         }
@@ -93,7 +94,7 @@ public class SpotSetUpController {
 
 
     @PostMapping(value = "/create")
-    String create(@Validated SpotForm form, BindingResult result, Model model, HttpServletRequest httpServletRequest) {
+    String create(@Validated ContentForm form, BindingResult result, Model model, HttpServletRequest httpServletRequest) {
         if (result.hasErrors()) {
             return list(model);
         }

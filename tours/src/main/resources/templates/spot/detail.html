@@ -13,26 +13,19 @@
 
     <form th:action="@{update}" th:object="${spotForm}" method="post">
         <dl>
-            <div id="disAbledInput">
-            <dt><label for="spotLat">経度:</label></dt>
-            <dd><input type="text" name="spotLat" id="spotLat" readonly th:field="*{spotLat}" th:errorclass="error_input" value="1"></dd>
-            <!-- <span th:if="${#fields.haserrors('spotLat')}" th:errors="*{spotLat}" class="error-messages">error!</span>
-            -->
-            <dt><label for="spotLng">緯度:</label></dt>
-            <dd><input type="text" name="spotLng" id="spotLng" readonly th:field="*{spotLng}" th:errorclass="error_input" value="2"></dd>
-            <!-- <span th:if="${#fields.haserrors('spotLng')}" th:errors="*{spotLng}" class="error-messages">error!</span>
-            -->
-            <br>
-            </div>
+
             <dt><label for="spotName">名前:</label></dt>
             <dd><input type="text" name="spotName" id="spotName" th:field="*{spotName}" th:errorclass="error_input" value="a"></dd>
             <!-- <span th:if="${#fields.haserrors('spotName')}" th:errors="*{spotName}" class="error-messages">error!</span>
             -->
+            <a class="btn btn-primary" th:href="@{content/add(spotId=${param.spotId[0]})}">コンテンツ追加</a>
+            
             <input type="hidden" name="spotId" th:value="${param.spotId[0]}" />
             <input type="hidden" name="tourId" th:value="${param.tourId[0]}" />
             <input class="btn btn-primary" type="submit" value="更新" /></input>
         </dl>
     </form> 
+    
 
     <hr/>
 

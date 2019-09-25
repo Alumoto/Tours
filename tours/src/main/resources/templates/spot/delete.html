@@ -2,19 +2,21 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>ツアー削除</title>
+    <title>スポット削除</title>
     <div th:replace="common::head-com()"></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
 
 <body>
     <div th:replace="common::nav-bar()"></div>
     <div class = "container">
-        <h4><span class="text-primary" th:text="${tourTitle}">ツアータイトル</span> を削除しますか？<br></h4>
-        <span style="color: red">このツアー内のスポット、コンテンツもすべて削除されます！<br>この操作は取り消せません！</span>
+        <h4><span class="text-primary" th:text="${spotName}">spotName</span> を削除しますか？<br></h4>
+        <span style="color: red">このスポットに紐づけられたコンテンツも削除されます！<br>この操作は取り消せません！</span><br>
         <form th:action="@{delete}" method="POST">
             <button type="submit" class="btn btn-danger">削除</button>
+            <input type="hidden" name="spotId" th:value="${spotId}">
             <input type="hidden" name="tourId" th:value="${tourId}">
         </form>
+        <br>
         <a th:href="@{detail(tourId=${tourId})}" class="btn btn-primary">戻る</a></h4>
 
 

@@ -27,19 +27,22 @@
                 <table class="table table-striped table-bordered table-condensed">
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th colspan="2">operations</th>
+                        <th>スポット名</th>
+                        <th colspan="2">操作</th>
                     </tr>
                     <tr th:each="spot : ${spots}">
                         <td th:text="${spot.spotNo}">100</td>
                         <td th:text="${spot.spotName}">てすと</td>
-                        <td th:text="${spot.spotLat}">100</td>
-                        <td th:text="${spot.spotLng}">100</td>
                         <td>   
                             <form th:action="@{spot/detail}" method="GET">
-                                <button type="submit" class="btn btn-info">編集する</button>
+                                <button type="submit" class="btn btn-info">編集</button>
+                                <input type="hidden" name="spotId" th:value="${spot.spotId}" />
+                                <input type="hidden" name="tourId" th:value="${param.tourId[0]}" />
+                            </form>
+                        </td>
+                        <td>   
+                            <form th:action="@{spot/delete_conf}" method="GET">
+                                <button type="submit" class="btn btn-danger">削除</button>
                                 <input type="hidden" name="spotId" th:value="${spot.spotId}" />
                                 <input type="hidden" name="tourId" th:value="${param.tourId[0]}" />
                             </form>

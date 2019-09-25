@@ -13,8 +13,8 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ContentRepository extends JpaRepository<Content, Integer> {
 
-    @Query("SELECT x FROM Spot x ORDER BY x.contentId")
-    Page<Content> findAllOrderById(Pageable pageable);
+    // @Query("SELECT x FROM Spot x ORDER BY x.contentId")
+    // Page<Content> findAllOrderById(Pageable pageable);
 
     List<Content> findByParentSpot(Spot spot);
 

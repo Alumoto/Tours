@@ -53,7 +53,7 @@ public class Content {
     private String contentDetail;
 
     @ManyToOne
-    private User creater;
+    private User creator;
 
     @ManyToOne
     private Spot parentSpot;

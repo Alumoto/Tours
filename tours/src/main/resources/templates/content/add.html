@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>コンテンツ追加</title>
+    <div th:replace="common::head-com()"></div>
+    <script type="text/javascript" th:src="@{/js/data_upload_view.js}" />
+
+<body>
+    <div th:replace="common::nav-bar()"></div>
+    <div class="container">
+        <h2>コンテンツ追加</h2>
+        <form th:action="@{create}" th:object="${contentForm}" method="post" name="addcontent">
+            <dl>
+                <dt><label for="contentType">コンテンツタイプ</label></dt>
+                <dd>
+                    <select id="contentType" name="contentType" onChange="typeChange();">
+                        <option value=1>テキスト</option>
+                        <option value=2>画像</option>
+                        <option value=3>動画</option>
+                        <option value=4>音声</option>
+                        <option value=5>クイズ</option>
+                    </select>
+                </dd>
+                <dt><label for="contentDescription">説明</label></dt>
+                <dd><textarea rows="10" /></dd>
+            </dl>
+        </form>
+    </div>
+</body>
+
+</html>
