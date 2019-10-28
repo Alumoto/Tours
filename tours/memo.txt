@@ -1,0 +1,2 @@
+heroku に git cli からデプロイ
+git subtree push --prefix tours/ heroku master
