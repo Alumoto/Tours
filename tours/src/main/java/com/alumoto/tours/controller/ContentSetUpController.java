@@ -84,41 +84,32 @@ public class ContentSetUpController {
             return detailForm(spotId, tourId, form);
         }
         Spot spot = spotService.findById(spotId).get();
-        spot.setSpotLng(form.getSpotLng());
-        spot.setSpotLat(form.getSpotLat()); 
-        spot.setSpotName(form.getSpotName());   
 
         spotService.update(spot);
         return "redirect:/setup/edit?tourId="+tourId;//これはURLを返す
     }
 
 
-    @PostMapping(value = "/create")
-    String create(@Validated ContentForm form, BindingResult result, Model model, HttpServletRequest httpServletRequest) {
-        if (result.hasErrors()) {
-            return list(model);
-        }
-        String username = httpServletRequest.getRemoteUser();
-        User user = userService.findByUsername(username).get();
-        Spot spot = new Spot();
-        Tour tour = tourService.findById(form.getTourId()).get();
-        int spotNo;
-        if(tour.getSpotList() == null){
-            spotNo = 1;
-        }else{
-            spotNo = tour.getSpotList().size() + 1;
-        }
+    // @PostMapping(value = "/create")
+    // String create(@Validated ContentForm form, BindingResult result, Model model, HttpServletRequest httpServletRequest) {
+    //     if (result.hasErrors()) {
+    //         return list(model);
+    //     }
+    //     String username = httpServletRequest.getRemoteUser();
+    //     User user = userService.findByUsername(username).get();
+    //     Spot spot = new Spot();
+    //     int spotNo;
+    //     if(tour.getSpotList() == null){
+    //         spotNo = 1;
+    //     }else{
+    //         spotNo = tour.getSpotList().size() + 1;
+    //     }
 
-        spot.setSpotLng(form.getSpotLng());
-        spot.setSpotLat(form.getSpotLat()); 
-        spot.setSpotName(form.getSpotName());       
-        spot.setCreator(user);
-        spot.setParentTour(tour);
-        spot.setSpotNo(spotNo);
 
-        spotService.create(spot);
 
-        return "redirect:/setup/edit?tourId="+tour.getTourId();//これはURLを返す
-    }
+    //     spotService.create(spot);
+
+    //     return "redirect:/setup/edit?tourId="+tour.getTourId();//これはURLを返す
+    // }
 
 }
